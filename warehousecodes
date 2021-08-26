@@ -1,0 +1,21 @@
+load warehouseMaps2.mat logicalMap
+map = binaryOccupancyMap(logicalMap);
+show(map)
+chargingStn = [5,3];
+loadingStn = [30,33];
+unloadingStn = [38,56];
+hold on;
+
+text(chargingStn(1), chargingStn(2), 1, 'Charging');
+plotTransforms([chargingStn, 0], [1 0 0 0])
+
+text(loadingStn(1), loadingStn(2), 1, 'Sorting Station');
+plotTransforms([loadingStn, 0], [1 0 0 0])
+
+text(unloadingStn(1), unloadingStn(2), 1, 'Unloading Station');
+plotTransforms([unloadingStn, 0], [1 0 0 0])
+
+hold off;
+open_system('warehouseTasksRobotSimulationModel.slx')
+simulation = sim('warehouseTasksRobotSimulationModel.slx');
+
